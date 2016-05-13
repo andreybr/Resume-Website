@@ -1,0 +1,56 @@
+.header {
+  height: 80px;
+  width: 990px;
+  padding: 96px 0px 0px 10px;
+  background: #333;
+  background-image: url("https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xat1/t31.0-8/12109963_10153690987007937_4087549450956972745_o.jpg");
+  background-size: 1950px 1150px;
+  background-position: 0px 925px; 
+  border-width: 0px 0px 0px 0px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.2);
+}    
+.header-box  {   
+  background: linear-gradient(90deg, rgba(0,0,0,1), rgba(0,0,0,0.0));  
+  background: rgba(0,0,0,0.7);
+  padding: 6px 10px;
+  min-width: 350px;
+  position: absolute;
+}
+.header h1 {
+  color: white;
+  padding: 0px 0px 0px 0px;
+  font-size: 27px;
+  margin: 0;
+  font-weight: normal;
+  line-height: 1;
+  float: left;
+}
+.header p {
+  padding: 3px 0px 3px 0px;
+  clear: left;
+  margin: 0;
+  font-size: 17px;
+  color: #6CC1D0;
+}
+.icon{
+  width: 26px;
+  height: 26px;
+  background-size: 26px;
+  display: inline-block;
+  margin: 0;
+  vertical-align: bottom;
+  margin-left: 3px;
+  vertical-align: top;
+  float: right;
+}
+.icon:hover {
+  box-shadow: inset 0px 0px 3px #6CC1D0;
+  margin-top: 0px;
+}
+.linkedin {
+  background-image: url("images/linkedin-icon.png");
+}
+.pixel-joint {
+  background-image: url("images/pixel-joint-icon.png");
+}

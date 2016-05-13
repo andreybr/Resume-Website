@@ -1,0 +1,203 @@
+<html lang="en-US">
+  <head>
+    <title>Projects</title>
+    <script type="text/javascript" src="libraries/jquery-1.12.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="navbar.css">
+    <link rel="stylesheet" type="text/css" href="footer.css">
+    <script type="text/javascript" src="navbar.js"></script>
+    <style type="text/css">         
+      .box-title {
+        margin: 0;
+        font-size: 18px; 
+        font-family: "Segoe UI",Arial,sans-serif;
+        line-height: 2;
+        color: #49839A;
+        text-decoration: none;
+        display: block;
+      }   
+      .box-title:hover {
+        color: #6FC9EC;
+        cursor: pointer;
+      }      
+      .project-box {
+        margin-left: 10px;
+        margin-top: 10px;
+        width: 805px;
+        height: 320px; 
+        overflow: hidden;
+      }
+      .project-box-left {
+        float: left;
+        padding: 10px;   
+        height: 300px;
+        width: 400px;
+        overflow: hidden;
+        background: #CECECE;
+        background: rgb(39, 45, 56);
+      }
+      .project-box-right { 
+        float: left;
+        padding: 6px 8px 8px 12px;  
+        width: 360px;
+        height: 306px;
+        background: #eee;
+        background: rgb(22, 24, 29);
+        margin: 0;
+        font-family: "Segoe UI",Arial,sans-serif;
+        font-size: 14px;
+        color: white;
+      }
+      .slideshow { 
+      }
+      .sliding-image  {
+        float: left;
+        position: absolute;
+        display:block;
+        box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.5);
+      }  
+      .slideshow-caption {
+        float: left;
+        padding: 4px;
+        position: absolute;
+        background: rgba(0,0,0,0.8);
+        color: white;
+        width: 392px;
+        font-size: 12px;
+      }
+    </style>
+    <script>
+      $(document).ready(function(){
+        var slideshows = document.getElementsByClassName("slideshow");
+        var numSlideshows = slideshows.length;
+        var imageCounts = new Array(numSlideshows);
+        var indexes = new Array(numSlideshows);
+        //console.log(numSlideshows + " slideshows")
+        //console.log(slideshows)
+        
+        var x;
+        for(x = 0; x < numSlideshows; x++)
+        {
+          slideshows[x].id = "slideshow" + x;
+          indexes[x] = $("#slideshow" + x).children().length - 1;
+          imageCounts[x] = indexes[x];
+        }   
+         
+        //console.log(indexes);
+        window.setInterval(switchImage, 7000);      
+        //console.log($("#slideshow0").children().);
+      
+        function switchImage() {
+          //console.log(indexes);
+          //console.log(imageCounts);
+          var z;
+          for(z = 0; z < numSlideshows; z++) {
+            while($("#slideshow" + z).children().get(indexes[z]).tagName != "IMG") {
+              indexes[z]--;
+            }     
+          
+            //while($($("#slideshow" + z).children().get(indexes[z]).tagName != "IMG")) {
+            //  indexes[z] -= 1;
+            //}
+          
+            if(imageCounts[z] > 1) {
+              $($("#slideshow" + z).children().get(indexes[z])).fadeOut(1200);          
+              indexes[z] -= 1;
+            }
+            
+            // redraw images when all are faded
+            if(indexes[z] == -1) {
+              indexes[z] = imageCounts[z];
+              $("#slideshow" + z).children().fadeIn(1200)        
+            }
+          }
+        }  
+      });
+    </script>
+  </head>
+  <body>
+    <div id="page">
+      <div class="header">
+        <div class="header-box">
+          <h1>Andrey Brushchenko</h1>
+          <a class="icon linkedin" href="https://www.linkedin.com/in/andreybrushchenko" target="_blank"></a>
+          <a class="icon pixel-joint" href="http://pixeljoint.com/p/16516.htm" target="_blank"></a>
+          <p>Web Developer &bull; Game Developer &bull; Pixel Artist</p> 
+        </div>
+      </div>
+      <div class="navbar">    
+        <div class="nav-container"> 
+          <ul>
+            <li>
+              <a class="navlink-style1" href="about_me.html">About Me</a>
+            </li>
+            <li>
+              <a class="navlink-style1" id="resume-btn" href="resume.html">Resume</a>
+            </li>
+            <li>
+              <a class="navlink-style2" id="projects-btn" href="projects.html">Projects</a>
+              <div id="projects-drop-down" class="drop-down">
+                <a href="projects_whole.php?project=splendor">Splendor</a>
+                <a href="projects_whole.php?project=catan">Catan</a>
+                <a href="projects_whole.php?project=minigames">Mini-games</a>
+              </div>
+            </li>
+            <li>
+              <a class="navlink-style1" href="contact_me.php">Contact Me</a>
+            </li>
+          </ul>  
+        </div>
+      </div>    
+      <div class="project-box">
+        <div class="project-box-left">
+          <div class="slideshow">
+            <img class="sliding-image" src="images/screenshots/splendor1.png" alt="splendor" style="width:400px;height:300px;">
+            <img class="sliding-image" src="images/screenshots/splendor2.png" alt="splendor" style="width:400px;height:300px;">
+            <img class="sliding-image" src="images/screenshots/splendor3.png" alt="splendor" style="width:400px;height:300px;">
+          </div>
+        </div>
+        <div class="project-box-right">      
+          <a class="box-title" href="projects_whole.php?project=splendor">Splendor</a>
+           A digital recreation of the board game Splendor. In Splendor, you take on the role of a rich merchant 
+          during the Renaissance. You will use your resources to acquire mines, transportation methods, and artisans 
+          who will allow you to turn raw gems into beautiful jewels.
+        </div>
+      </div>
+      <div class="project-box">
+        <div class="project-box-left">
+          <div class="slideshow">
+            <img class="sliding-image" src="images/screenshots/catan1.png" alt="catan" style="width:400px;height:300px;">
+            <img class="sliding-image" src="images/screenshots/catan2.png" alt="catan" style="width:400px;height:300px;">
+            <img class="sliding-image" src="images/screenshots/catan3.png" alt="catan" style="width:400px;height:300px;">
+            <img class="sliding-image" src="images/screenshots/catan4.png" alt="catan" style="width:400px;height:300px;">
+          </div>
+        </div>
+        <div class="project-box-right">      
+          <a class="box-title" href="projects_whole.php?project=catan">The Settlers of Catan</a>
+           A digital recreation of the board game Splendor. In Splendor, you take on the role of a rich merchant 
+          during the Renaissance. You will use your resources to acquire mines, transportation methods, and artisans 
+          who will allow you to turn raw gems into beautiful jewels.
+        </div>
+      </div>
+      <div class="project-box">
+        <div class="project-box-left">
+          <div class="slideshow">
+            <img class="sliding-image" src="images/screenshots/PartyMain.png" style="width:400px;height:300px;">
+            <img class="sliding-image" src="images/screenshots/PartyProfile.png" style="width:400px;height:300px;">
+            <img class="sliding-image" src="images/screenshots/PartyGame2.png"s tyle="width:400px;height:300px;">
+            <img class="sliding-image" src="images/screenshots/PartyPickGame.png" style="width:400px;height:300px;">
+            <img class="sliding-image" src="images/screenshots/PartyGame1.png" style="width:400px;height:300px;">
+          </div>
+        </div>
+        <div class="project-box-right">      
+          <a class="box-title" href="">Mini-games</a>
+           A digital recreation of the board game Splendor. In Splendor, you take on the role of a rich merchant 
+          during the Renaissance. You will use your resources to acquire mines, transportation methods, and artisans 
+          who will allow you to turn raw gems into beautiful jewels.
+        </div>
+      </div>
+    </div>
+    <div id="footer">Copyright &copy 2016 Andrey Brushchenko. All Rights Reserved.</div>
+  </body>
+</html>
